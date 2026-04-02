@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebook Exclusivo • 50 Prompts Gemini AI - Imagens Ultra-Realistas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --gold: #d4af77;
+        }
+        
+        .tail-container * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        .title-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+        
+        body {
+            background: #0a0a0a;
+        }
+        
+        .hero-header {
+            background: linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 119, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            animation: gold-glow 8s ease infinite;
+        }
+        
+        @keyframes gold-glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        .shimmer-title {
+            animation: shimmer 4s linear infinite;
+            background: linear-gradient(90deg, #111 0%, var(--gold) 50%, #111 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .gold-button {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gold-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px 8px rgba(212, 175, 119, 0.5);
+        }
+        
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 30px -10px rgba(212, 175, 119, 0.2);
+        }
+        
+        .access-box {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body class="tail-container text-white min-h-screen">
+    
+    <!-- HERO HEADER CENTRALIZADO - PRETO & DOURADO COM ANIMAÇÃO -->
+    <div class="hero-header py-16">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-[#d4af77] to-[#b38b4f] rounded-3xl flex items-center justify-center text-4xl shadow-inner">📸</div>
+                <h1 class="title-font text-6xl font-bold tracking-tighter shimmer-title">
+                    EBOOK GEMINI AI
+                </h1>
+            </div>
+            
+            <p class="text-2xl font-light text-[#d4af77] mb-2 tracking-widest">50 PROMPTS ULTRA-REALISTAS</p>
+            <p class="max-w-lg mx-auto text-zinc-400 text-lg mb-12">
+                25 prompts originais + 25 novos cenários premium • Identidade facial 100% preservada
+            </p>
+            
+            <!-- FORMULÁRIO DE ACESSO -->
+            <div class="access-box max-w-md mx-auto bg-[#111111] border border-[#d4af77]/30 rounded-3xl p-8 shadow-2xl">
+                <div class="flex items-center justify-center gap-3 mb-6 text-[#d4af77]">
+                    <span class="text-3xl">🔒</span>
+                    <span class="uppercase text-sm font-semibold tracking-widest">Acesso Exclusivo</span>
+                </div>
+                
+                <p class="text-center text-zinc-300 mb-6 text-sm">
+                    Insira o email da sua compra para desbloquear os 50 prompts
+                </p>
+                
+                <div id="access-form" class="flex flex-col gap-4">
+                    <input 
+                        id="email-input"
+                        type="email" 
+                        placeholder="seu@email.com"
+                        class="bg-black border border-[#d4af77]/40 focus:border-[#d4af77] text-white placeholder:text-zinc-500 rounded-2xl px-6 py-5 text-base outline-none transition-all">
+                    
+                    <button 
+                        onclick="verificarAcesso()"
+                        class="gold-button bg-gradient-to-r from-[#d4af77] to-[#b38b4f] text-black font-bold py-5 rounded-2xl text-lg flex items-center justify-center gap-3 shadow-lg">
+                        DESBLOQUEAR AGORA
+                        <span class="text-2xl">→</span>
+                    </button>
+                </div>
+                
+                <div id="access-success" class="hidden flex-col items-center gap-3 py-4">
+                    <span class="text-5xl mb-2">✅</span>
+                    <span class="text-[#d4af77] font-semibold text-xl">Acesso liberado!</span>
+                    <p class="text-zinc-400 text-sm">Bem-vindo ao ebook completo com 50 prompts</p>
+                </div>
+            </div>
+            
+            <p class="text-xs text-zinc-500 mt-8 flex items-center justify-center gap-2">
+                <span class="inline-block w-3 h-px bg-[#d4af77]"></span>
+                DESIGN PROFISSIONAL • PRETO &amp; DOURADO • 2026
+                <span class="inline-block w-3 h-px bg-[#d4af77]"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="main-content" class="max-w-6xl mx-auto px-6 py-16 hidden">
+        
+        <!-- MINI GUIA -->
+        <div class="bg-zinc-900/80 border border-[#d4af77]/20 rounded-3xl p-12 mb-16">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="text-5xl">📖</div>
+                <h2 class="title-font text-5xl font-bold">Mini Guia: Como usar os prompts no Gemini</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="space-y-8">
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Acesse o Gemini</h4>
+                            <p class="text-zinc-400">Abra <a href="https://gemini.google.com" target="_blank" class="text-[#d4af77] hover:underline">gemini.google.com</a></p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Upload da sua foto de referência</h4>
+                            <p class="text-zinc-400">Use uma foto nítida do seu rosto (ex: caminhando em parque com luz natural).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Cole o prompt completo</h4>
+                            <p class="text-zinc-400">Copie o Prompt (EN) inteiro (já inclui o prefixo poderoso).</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Gere em segundos</h4>
+                            <p class="text-zinc-400">Baixe as imagens ultra-realistas e use onde quiser.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-black to-[#111] border border-[#d4af77]/30 rounded-3xl p-8 flex flex-col justify-center text-center">
+                    <a href="https://gemini.google.com" target="_blank" class="gold-button inline-flex items-center justify-center gap-4 bg-[#d4af77] text-black py-8 rounded-3xl text-2xl font-bold">
+                        ABRIR GEMINI AGORA
+                        <span class="text-4xl">🚀</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 1: 25 PROMPTS ORIGINAIS -->
+        <h2 class="title-font text-5xl font-bold text-center mb-3">Os 25 Prompts Originais</h2>
+        <p class="text-center text-zinc-400 mb-12">Clique em COPIAR e cole direto no Gemini</p>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-24">
+            
+            <!-- PROMPT 1 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #01</div>
+                    <button onclick="copiarPrompt(1)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-1" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an ultra-realistic portrait using the reference images. Preserve exact facial identity, natural skin texture, DSLR 85mm, soft natural daylight, shallow depth of field, cinematic realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Retrato extremamente realista da pessoa em luz natural suave, como se tivesse sido fotografada em câmera profissional. A pele terá textura visível, sem efeito “plastificado”, fundo desfocado e foco total no rosto.</p>
+            </div>
+
+            <!-- PROMPT 2 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #02</div>
+                    <button onclick="copiarPrompt(2)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-2" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Hyper-realistic street photo of the subject walking in a modern urban avenue during golden hour, natural motion blur, candid photography style, realistic shadows.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa andando naturalmente em uma rua moderna no fim da tarde, com luz dourada do sol. A imagem parece capturada no momento real, sem pose forçada.</p>
+            </div>
+
+            <!-- PROMPT 3 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #03</div>
+                    <button onclick="copiarPrompt(3)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-3" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Ultra-realistic indoor portrait of the subject sitting near a window with soft daylight, natural shadows, editorial photography style, high detail.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">A pessoa sentada perto de uma janela dentro de casa, com luz suave entrando lateralmente. Atmosfera calma, estilo revista profissional.</p>
+            </div>
+
+            <!-- PROMPT 4 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #04</div>
+                    <button onclick="copiarPrompt(4)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-4" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Cinematic urban portrait of the subject in a busy city environment, background pedestrians slightly blurred, HDR lighting, realistic depth.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Foto em meio a uma cidade movimentada, com pessoas passando ao fundo desfocadas. A pessoa aparece em destaque como foco principal.</p>
+            </div>
+
+            <!-- PROMPT 5 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #05</div>
+                    <button onclick="copiarPrompt(5)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-5" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Photorealistic coffee shop scene, subject sitting at a table holding a coffee cup, warm lighting, candid lifestyle photography.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa em uma cafeteria, segurando um café, com iluminação quente e ambiente aconchegante, como foto espontânea.</p>
+            </div>
+
+            <!-- PROMPT 6 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #06</div>
+                    <button onclick="copiarPrompt(6)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-6" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Ultra-realistic park portrait, subject standing among trees, soft sunlight through leaves, natural posing, DSLR quality.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa em um parque com árvores ao redor e luz do sol passando pelas folhas, criando sombras naturais no rosto.</p>
+            </div>
+
+            <!-- PROMPT 7 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #07</div>
+                    <button onclick="copiarPrompt(7)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-7" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Close-up hyper-realistic portrait, focus on eyes and skin detail, studio lighting, shallow depth of field, cinematic sharpness.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Close no rosto com nível extremo de detalhe nos olhos e pele, iluminação de estúdio profissional.</p>
+            </div>
+
+            <!-- PROMPT 8 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #08</div>
+                    <button onclick="copiarPrompt(8)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-8" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Realistic home office scene, subject working on laptop, minimal clean environment, natural window lighting.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa trabalhando em um notebook em ambiente organizado e moderno, luz natural entrando pela janela.</p>
+            </div>
+
+            <!-- PROMPT 9 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #09</div>
+                    <button onclick="copiarPrompt(9)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-9" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Beach sunset ultra-realistic portrait, golden reflections on skin, natural wind in hair, cinematic composition.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa na praia durante o pôr do sol, com vento leve no cabelo e luz dourada refletindo na pele.</p>
+            </div>
+
+            <!-- PROMPT 10 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #10</div>
+                    <button onclick="copiarPrompt(10)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-10" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Mirror selfie style ultra-realistic image, natural phone reflection, casual outfit, indoor lighting.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Selfie no espelho dentro de casa, aparência natural, sem exagero de pose.</p>
+            </div>
+
+            <!-- PROMPT 11 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #11</div>
+                    <button onclick="copiarPrompt(11)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-11" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Library portrait, subject reading a book, warm lighting, shallow depth of field, intellectual atmosphere.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa lendo em uma biblioteca silenciosa, luz quente e ambiente calmo.</p>
+            </div>
+
+            <!-- PROMPT 12 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #12</div>
+                    <button onclick="copiarPrompt(12)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-12" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Night city neon portrait, reflections on face, wet streets, cinematic mood lighting.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa à noite em rua iluminada por neon, com reflexos coloridos e clima cinematográfico.</p>
+            </div>
+
+            <!-- PROMPT 13 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #13</div>
+                    <button onclick="copiarPrompt(13)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-13" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Gym lifestyle realistic photo, subject training naturally, sweat detail, high contrast lighting.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa treinando na academia com aparência realista de esforço físico e iluminação forte.</p>
+            </div>
+
+            <!-- PROMPT 14 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #14</div>
+                    <button onclick="copiarPrompt(14)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-14" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Candid laughter social scene, natural group environment, warm tones, blurred background.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa rindo naturalmente em ambiente social, sem pose forçada.</p>
+            </div>
+
+            <!-- PROMPT 15 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #15</div>
+                    <button onclick="copiarPrompt(15)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-15" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Kitchen lifestyle scene, subject preparing food, morning light, documentary photography style.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa cozinhando em casa com luz da manhã entrando, estilo documental.</p>
+            </div>
+
+            <!-- PROMPT 16 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #16</div>
+                    <button onclick="copiarPrompt(16)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-16" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Travel portrait near famous landmark, candid tourist style, realistic crowd background.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa em viagem posando naturalmente em frente a um ponto turístico.</p>
+            </div>
+
+            <!-- PROMPT 17 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #17</div>
+                    <button onclick="copiarPrompt(17)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-17" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Fashion editorial portrait, studio background, high-end lighting, magazine style realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Foto estilo revista de moda, com iluminação profissional e fundo limpo.</p>
+            </div>
+
+            <!-- PROMPT 18 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #18</div>
+                    <button onclick="copiarPrompt(18)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-18" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Walking motion street shot, subject mid-step, natural movement blur, cinematic realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa andando na rua capturada em movimento natural.</p>
+            </div>
+
+            <!-- PROMPT 19 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #19</div>
+                    <button onclick="copiarPrompt(19)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-19" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Cozy home sofa portrait, warm lighting, relaxed posture, soft textures.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa relaxando no sofá com iluminação quente e ambiente confortável.</p>
+            </div>
+
+            <!-- PROMPT 20 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #20</div>
+                    <button onclick="copiarPrompt(20)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-20" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Rainy night umbrella portrait, wet reflections, neon lights, cinematic atmosphere.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa na chuva com guarda-chuva, luz refletindo no chão molhado.</p>
+            </div>
+
+            <!-- PROMPT 21 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #21</div>
+                    <button onclick="copiarPrompt(21)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-21" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Corporate professional headshot, neutral background, soft studio lighting, sharp focus.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Retrato profissional tipo LinkedIn, fundo neutro e iluminação equilibrada.</p>
+            </div>
+
+            <!-- PROMPT 22 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #22</div>
+                    <button onclick="copiarPrompt(22)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-22" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Sunrise outdoor portrait, soft orange light, peaceful expression, cinematic depth.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa ao nascer do sol com luz laranja suave e clima calmo.</p>
+            </div>
+
+            <!-- PROMPT 23 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #23</div>
+                    <button onclick="copiarPrompt(23)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-23" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Street candid smartphone use, natural posture, urban environment, realistic blur.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa usando celular na rua de forma espontânea.</p>
+            </div>
+
+            <!-- PROMPT 24 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #24</div>
+                    <button onclick="copiarPrompt(24)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-24" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Artistic dramatic lighting portrait, high contrast shadows, editorial style realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Retrato artístico com luz forte e sombras dramáticas.</p>
+            </div>
+
+            <!-- PROMPT 25 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #25</div>
+                    <button onclick="copiarPrompt(25)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-25" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Daily life documentary photo, subject in natural routine activity, raw candid realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a foto:</p>
+                <p class="text-zinc-400 text-sm">Pessoa em uma atividade do dia a dia capturada de forma espontânea e realista.</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 2: 25 NOVOS PROMPTS PREMIUM (26 a 50) -->
+        <h2 class="title-font text-5xl font-bold text-center mb-3 text-[#d4af77]">BÔNUS • 25 Novos Prompts Premium</h2>
+        <p class="text-center text-zinc-400 mb-12">Cenários reais avançados • Prefixo ultra-poderoso já incluso em cada um</p>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <!-- PROMPT 26 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #26</div>
+                    <button onclick="copiarPrompt(26)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-26" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Ultra-realistic scene of the subject inside a modern glass elevator, reflections accurately matching face and body, cool LED lighting, subtle motion blur, cinematic realism, 85mm lens, high dynamic range.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa dentro de elevador com paredes espelhadas, múltiplos reflexos coerentes, luz fria corporativa, sensação de prédio de alto padrão.</p>
+            </div>
+
+            <!-- PROMPT 27 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #27</div>
+                    <button onclick="copiarPrompt(27)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-27" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Photorealistic street portrait after rain, wet asphalt reflecting city lights, subject walking naturally, golden hour mixed with street reflections, cinematic depth.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Chão molhado refletindo luz da cidade, atmosfera realista pós-chuva, pessoa andando sem pose artificial.</p>
+            </div>
+
+            <!-- PROMPT 28 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #28</div>
+                    <button onclick="copiarPrompt(28)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-28" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Ultra-realistic in-car portrait, subject in driver seat, natural side lighting from window, dashboard reflections, shallow depth of field.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa dentro do carro com luz lateral entrando, reflexos no vidro e painel, aparência extremamente natural.</p>
+            </div>
+
+            <!-- PROMPT 29 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #29</div>
+                    <button onclick="copiarPrompt(29)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-29" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Photorealistic architectural setting, subject standing on modern concrete stairs, geometric shadows, natural sunlight, editorial framing.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente minimalista com escadas de concreto e sombras geométricas marcando o corpo.</p>
+            </div>
+
+            <!-- PROMPT 30 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #30</div>
+                    <button onclick="copiarPrompt(30)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-30" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Luxury hotel hallway scene, warm ambient lighting, soft carpet texture, subject walking forward, cinematic perspective.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa caminhando em corredor elegante, luz quente e ambiente sofisticado.</p>
+            </div>
+
+            <!-- PROMPT 31 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #31</div>
+                    <button onclick="copiarPrompt(31)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-31" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Hyper-realistic supermarket aisle scene, fluorescent lighting, product shelves in background, natural candid expression.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa em corredor de mercado, luz branca típica, fundo com produtos desfocados.</p>
+            </div>
+
+            <!-- PROMPT 32 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #32</div>
+                    <button onclick="copiarPrompt(32)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-32" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Night gas station portrait, strong overhead lighting, deep shadows, cinematic contrast, realistic reflections.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente noturno com iluminação forte de posto, contraste alto e estética cinematográfica.</p>
+            </div>
+
+            <!-- PROMPT 33 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #33</div>
+                    <button onclick="copiarPrompt(33)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-33" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Indoor portrait near window with rain droplets, soft diffused lighting, emotional cinematic tone.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa próxima à janela com gotas de chuva escorrendo, clima introspectivo.</p>
+            </div>
+
+            <!-- PROMPT 34 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #34</div>
+                    <button onclick="copiarPrompt(34)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-34" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Messy workspace scene, papers, laptop, realistic clutter, natural lighting, documentary realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente real de trabalho, levemente desorganizado, aparência autêntica.</p>
+            </div>
+
+            <!-- PROMPT 35 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #35</div>
+                    <button onclick="copiarPrompt(35)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-35" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Photorealistic narrow street scene, old architecture, natural shadows, subject walking casually.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ruas estreitas com prédios antigos, estilo europeu, profundidade natural.</p>
+            </div>
+
+            <!-- PROMPT 36 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #36</div>
+                    <button onclick="copiarPrompt(36)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-36" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Empty gym scene, hard directional lighting, strong shadows, realistic metal reflections.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Academia vazia com luz forte criando sombras intensas.</p>
+            </div>
+
+            <!-- PROMPT 37 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #37</div>
+                    <button onclick="copiarPrompt(37)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-37" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Night kitchen scene, warm tungsten lighting, realistic shadows, subject leaning on counter.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente doméstico com iluminação quente e sensação acolhedora.</p>
+            </div>
+
+            <!-- PROMPT 38 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #38</div>
+                    <button onclick="copiarPrompt(38)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-38" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Underground parking lot, low light, concrete textures, cinematic shadows, realistic noise grain.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente escuro com textura de concreto e luz pontual dramática.</p>
+            </div>
+
+            <!-- PROMPT 39 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #39</div>
+                    <button onclick="copiarPrompt(39)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-39" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Park bench scene, early morning fog, soft diffused light, cinematic atmosphere.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa sentada em banco com leve neblina e luz suave.</p>
+            </div>
+
+            <!-- PROMPT 40 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #40</div>
+                    <button onclick="copiarPrompt(40)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-40" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Balcony portrait, city skyline in background, wind interaction, natural lighting.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Vista de cidade ao fundo com sensação de altura e vento leve.</p>
+            </div>
+
+            <!-- PROMPT 41 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #41</div>
+                    <button onclick="copiarPrompt(41)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-41" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Crosswalk motion shot, subject mid-step, cars blurred in background, realistic city motion.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa atravessando rua com movimento real ao redor.</p>
+            </div>
+
+            <!-- PROMPT 42 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #42</div>
+                    <button onclick="copiarPrompt(42)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-42" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Clothing store environment, mirrors, racks, soft lighting, natural pose.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente comercial com espelhos e roupas ao fundo.</p>
+            </div>
+
+            <!-- PROMPT 43 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #43</div>
+                    <button onclick="copiarPrompt(43)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-43" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Classic wooden library, warm lighting, dust particles in light rays, cinematic realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente sofisticado com madeira e luz atravessando partículas no ar.</p>
+            </div>
+
+            <!-- PROMPT 44 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #44</div>
+                    <button onclick="copiarPrompt(44)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-44" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Suburban street portrait, parked cars, soft daylight, natural environment realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Rua calma com casas e carros estacionados, clima cotidiano.</p>
+            </div>
+
+            <!-- PROMPT 45 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #45</div>
+                    <button onclick="copiarPrompt(45)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-45" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Modern coworking space, glass walls, natural light, people blurred in background.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente moderno com transparência e movimento ao fundo.</p>
+            </div>
+
+            <!-- PROMPT 46 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #46</div>
+                    <button onclick="copiarPrompt(46)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-46" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Indoor portrait with light filtering through curtains, soft shadows, cinematic softness.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Luz suave atravessando cortina criando sombras delicadas.</p>
+            </div>
+
+            <!-- PROMPT 47 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #47</div>
+                    <button onclick="copiarPrompt(47)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-47" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Street market scene, colorful elements, natural chaos, documentary realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente movimentado com cores e elementos variados.</p>
+            </div>
+
+            <!-- PROMPT 48 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #48</div>
+                    <button onclick="copiarPrompt(48)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-48" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Bus stop scene, urban lighting, natural waiting posture, realistic environment.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa esperando transporte, postura natural e ambiente urbano.</p>
+            </div>
+
+            <!-- PROMPT 49 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #49</div>
+                    <button onclick="copiarPrompt(49)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-49" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Subway interior, artificial lighting, reflections on metal surfaces, candid realism.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Ambiente fechado com iluminação artificial e reflexos metálicos.</p>
+            </div>
+
+            <!-- PROMPT 50 -->
+            <div class="card bg-[#111111] border border-[#d4af77]/20 rounded-3xl p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-[#d4af77] font-mono text-sm">PROMPT #50</div>
+                    <button onclick="copiarPrompt(50)" class="bg-[#d4af77] hover:bg-amber-300 text-black text-xs font-medium px-6 py-3 rounded-2xl flex items-center gap-2">📋 COPIAR</button>
+                </div>
+                <p class="font-semibold text-[#d4af77] mb-2">Prompt (EN):</p>
+                <p id="prompt-50" class="text-sm text-zinc-300 leading-relaxed mb-6">
+                    Create an extremely photorealistic image using the provided reference photos. Preserve exact facial identity with high consistency. Maintain natural skin texture with visible pores, fine lines, and realistic imperfections. Use physically accurate lighting, global illumination, and natural color science. Shot on a full-frame DSLR camera (85mm lens), shallow depth of field, cinematic composition, high dynamic range, RAW photo realism. Avoid any AI artifacts, avoid plastic skin, avoid face distortion, avoid unnatural symmetry. Front door portrait, natural daylight, realistic residential setting, candid stance.
+                </p>
+                <p class="font-semibold text-[#d4af77] mb-2">Como será a imagem:</p>
+                <p class="text-zinc-400 text-sm">Pessoa em frente à própria casa, iluminação natural e clima cotidiano.</p>
+            </div>
+        </div>
+
+        <!-- RODAPÉ -->
+        <div class="mt-20 text-center border-t border-[#d4af77]/10 pt-12">
+            <a href="https://gemini.google.com" target="_blank" class="gold-button inline-flex items-center gap-4 bg-[#d4af77] text-black font-semibold px-12 py-6 rounded-3xl text-2xl">
+                GERAR AS 50 IMAGENS AGORA NO GEMINI
+                <span class="text-4xl">→</span>
+            </a>
+            <p class="text-xs text-zinc-500 mt-10">Ebook exclusivo • 50 prompts • Design profissional preto &amp; dourado</p>
+        </div>
+    </div>
+
+    <script>
+        function verificarAcesso() {
+            const email = document.getElementById('email-input').value.trim();
+            if (email.length > 5 && email.includes('@')) {
+                document.getElementById('access-form').classList.add('hidden');
+                document.getElementById('access-success').classList.remove('hidden');
+                document.getElementById('access-success').classList.add('flex');
+                
+                setTimeout(() => {
+                    document.getElementById('main-content').classList.remove('hidden');
+                    document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+                }, 800);
+            } else {
+                alert('Por favor, insira um email válido da compra.');
+            }
+        }
+
+        function copiarPrompt(n) {
+            const promptEl = document.getElementById('prompt-' + n);
+            if (!promptEl) return;
+            const texto = promptEl.textContent.trim();
+            
+            navigator.clipboard.writeText(texto).then(() => {
+                const btn = event.target;
+                const original = btn.innerHTML;
+                btn.innerHTML = '✅ COPIADO!';
+                btn.style.backgroundColor = '#d4af77';
+                
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.backgroundColor = '';
+                }, 2200);
+            });
+        }
+
+        console.log('%c✅ Ebook COMPLETO com todos os 50 cards carregado!', 'color:#d4af77; font-weight:bold');
+    </script>
+</body>
+</html>
